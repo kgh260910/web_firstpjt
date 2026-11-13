@@ -1,0 +1,18 @@
+# --- 이클립스 전용 설정 (프로젝트 메타데이터는 유지하되 서버/임시 파일만 제외) ---
+.settings/
+.apt_generated/
+.factorypath
+
+# --- 빌드 및 컴파일 결과물 (로컬에서 자동 생성되므로 제외) ---
+build/
+bin/
+target/
+
+# --- 이클립스 임시 및 캐시 파일 ---
+*.log
+.tmp/
+.cache/
+
+# --- 운영체제 부산물 ---
+.DS_Store
+Thumbs.d
