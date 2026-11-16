@@ -14,6 +14,7 @@
 	&nbsp;&nbsp; | &nbsp;&nbsp;
 	<a href="/firstpjt/signin.mem">sign-in</a>
 
+	<br><br>
 	This page is signup OK!!
 
 </body>

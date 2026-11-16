@@ -5,8 +5,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class MemberService {
 	
+	final public static int SIGN_UP_OK = 1;
+	final public static int SIGN_UP_NG = 0;
 	final public static int SIGN_IN_OK = 1;
 	final public static int SIGN_IN_NG = 0;
+	
 	
 	MemberDao memberDao = new MemberDao();
 
@@ -18,10 +21,8 @@ public class MemberService {
 		String memPhone = request.getParameter("memPhone");
 		
 		MemberDto memberDto = new MemberDto(memId, memPw, memMail, memPhone);
-		
-		int result = memberDao.insertNewMember(memberDto);
-		
-		return result;
+			
+		return memberDao.insertNewMember(memberDto);
 	}
 
 	public int signinConfirm(HttpServletRequest request, HttpServletResponse response) {

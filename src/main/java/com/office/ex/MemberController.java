@@ -12,6 +12,7 @@ import java.io.IOException;
 public class MemberController extends HttpServlet {  // 서블릿이 되기 위해 HttpServlet을 상속
 	private static final long serialVersionUID = 1L;
        
+	MemberService memberService = new MemberService();
 
     public MemberController() {
         super();
@@ -26,7 +27,7 @@ public class MemberController extends HttpServlet {  // 서블릿이 되기 위�
 		String contextPath = request.getContextPath();	
 		String command = RequestURI.substring(contextPath.length()); // substring : 문자열을 잘라내는 메서드
 
-		MemberService memberService = null;
+//		MemberService memberService = new MemberService(); 여기다 객체생성을하면 요청할때마다 객체가 생성됩니다.
 		String nextPage = null;
 		
 		switch (command) {
@@ -35,11 +36,11 @@ public class MemberController extends HttpServlet {  // 서블릿이 되기 위�
 			break;
 			
 		case "/signup_confirm.mem":
-			memberService = new MemberService();
+//			memberService = new MemberService();
 			
 			int resultForSignUp = memberService.signupConfirm(request, response);
 			
-			if (resultForSignUp == 1) {
+			if (resultForSignUp == MemberService.SIGN_UP_OK) {
 				nextPage = "view/member/signup_ok.jsp";
 			} else {
 				nextPage = "view/member/signup_ng.jsp";
@@ -53,7 +54,7 @@ public class MemberController extends HttpServlet {  // 서블릿이 되기 위�
 			break;
 			
 		case "/signin_confirm.mem":
-			memberService = new MemberService();
+//			memberService = new MemberService();
 			int resultForSignIn = memberService.signinConfirm(request, response);
 			
 			if (resultForSignIn == MemberService.SIGN_IN_OK) {
