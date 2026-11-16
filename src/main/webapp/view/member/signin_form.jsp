@@ -10,6 +10,9 @@
 
 	<h2>SIGN-IN FORM</h2>
 	
+	<jsp:include page="../include/nav.jsp"/>
+	<jsp:include page="../include/title.jsp"/>
+	
 	<a href="/firstpjt">home</a>    <%--http://localhost:8090/firstpjt/#none 가 주소일때 넣는방법 --%> 
 	&nbsp;&nbsp; | &nbsp;&nbsp;
 	<a href="/firstpjt/signup.mem">sign-up</a>

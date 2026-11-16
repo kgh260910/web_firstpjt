@@ -8,6 +8,9 @@
 </head>
 <body>
 
+	<jsp:include page="../include/nav.jsp"/>
+	<jsp:include page="../include/title.jsp"/>
+
 	<h2>SIGN-UP FORM</h2>
 	
 	<a href="/firstpjt">home</a>    <%--http://localhost:8090/firstpjt/#none 가 주소일때 넣는방법 --%> 

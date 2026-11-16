@@ -2,6 +2,7 @@ package com.office.ex;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class MemberService {
 	
@@ -39,9 +40,26 @@ public class MemberService {
 //			return SIGN_IN_NG;
 //		}
 		// 리팩토링
-		if (selectedMemberDto != null && selectedMemberDto.getMemPw().equals(memPw)) 
+		if (selectedMemberDto != null && selectedMemberDto.getMemPw().equals(memPw))  {
+			 
+			HttpSession session = request.getSession();  // 세션객체 받기 (세션 생성은 서버에 접속했을 때 된다.)
+//			session.setAttribute("signinedMemberId", selectedMemberDto.getMemId());    
+			session.setAttribute(Config.SIGNINED_MEMBER_ID, selectedMemberDto.getMemId()); //윗줄을 Config로 리팩토링
+			session.setMaxInactiveInterval(60 * 30);  // 세션유지시간 : 초단위 * 30 = 30분
+			
 			return SIGN_IN_OK;
+		}
 	
 		return SIGN_IN_NG; 
+	}
+
+	public void signoutConfirm(HttpServletRequest request, HttpServletResponse response) {
+		
+		HttpSession session = request.getSession();
+		session.removeAttribute(Config.SIGNINED_MEMBER_ID); //세션 객체는 살리고 ID는 제거
+		
+		// 또 다른 방법
+//		session.invalidate();  // 세션 객체 자체를 제거  
+		
 	}
 }

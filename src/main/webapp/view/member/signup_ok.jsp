@@ -8,6 +8,9 @@
 </head>
 <body>
 
+	<jsp:include page="../include/nav.jsp"/>
+	<jsp:include page="../include/title.jsp"/>
+
 	This page is signup OK!!
 
 </body>

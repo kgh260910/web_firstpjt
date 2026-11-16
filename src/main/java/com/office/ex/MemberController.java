@@ -65,6 +65,12 @@ public class MemberController extends HttpServlet {  // 서블릿이 되기 위�
 			
 			break;
 			
+		case "/signout.mem":
+			
+			memberService.signoutConfirm(request, response);
+			
+			break;
+			
 		}
 		
 		// dispatcher가 응답해서 페이지를 보여준다.
