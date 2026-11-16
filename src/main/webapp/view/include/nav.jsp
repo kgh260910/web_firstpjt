@@ -1,3 +1,4 @@
+<%@page import="com.office.ex.member.MemberConfig"%>
 <%@page import="com.office.ex.Config"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -8,9 +9,9 @@
 		if (object != null) {
 	%>
 		<%-- <%= 내용%>은 자바에서 가져온 내용을 print하는것과 동일하다. --%>
-			<a href="<%= request.getContextPath() %>/">home</a>
+			<a href="<%= request.getContextPath().concat(Config.HOME) %>">home</a>
 			&nbsp;&nbsp; | &nbsp;&nbsp;
-			<a href="<%= request.getContextPath() %>/signup.mem">sign-out</a>
+			<a href="<%= request.getContextPath().concat(MemberConfig.MEMBER_SIGNOUT_CONFIRM) %>">sign-out</a>
 			&nbsp;&nbsp; | &nbsp;&nbsp;
 			<a href="<%= request.getContextPath() %>/signin.mem">modify</a>
 			&nbsp;&nbsp; | &nbsp;&nbsp;
@@ -18,7 +19,7 @@
 	<%
 		} else {
 	%>
-			<a href="<%= request.getContextPath() %>/">home</a>    <%--http://localhost:8090/firstpjt/#none 가 주소일때 넣는방법 --%> 
+			<a href="<%= request.getContextPath() %>/">home</a>  
 			&nbsp;&nbsp; | &nbsp;&nbsp;
 			<a href="<%= request.getContextPath() %>/signup.mem">sign-up</a>
 			&nbsp;&nbsp; | &nbsp;&nbsp;

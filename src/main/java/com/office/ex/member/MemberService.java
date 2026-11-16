@@ -1,4 +1,6 @@
-package com.office.ex;
+package com.office.ex.member;
+
+import com.office.ex.Config;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

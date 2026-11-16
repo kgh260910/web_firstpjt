@@ -1,4 +1,4 @@
-package com.office.ex;
+package com.office.ex.member;
 
 import java.util.HashMap;
 import java.util.Map;

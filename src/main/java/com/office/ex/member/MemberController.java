@@ -1,4 +1,4 @@
-package com.office.ex;
+package com.office.ex.member;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import com.office.ex.Config;
 
 @WebServlet("*.mem")
 public class MemberController extends HttpServlet {  // 서블릿이 되기 위해 HttpServlet을 상속
@@ -32,7 +34,7 @@ public class MemberController extends HttpServlet {  // 서블릿이 되기 위�
 		
 		switch (command) {
 		case "/signup.mem":
-			nextPage = "view/member/signup_form.jsp";      // 응답페이지 만들기
+			nextPage = generateView("/signup_form");      // 응답페이지 만들기
 			break;
 			
 		case "/signup_confirm.mem":
@@ -41,7 +43,8 @@ public class MemberController extends HttpServlet {  // 서블릿이 되기 위�
 			int resultForSignUp = memberService.signupConfirm(request, response);
 			
 			if (resultForSignUp == MemberService.SIGN_UP_OK) {
-				nextPage = "view/member/signup_ok.jsp";
+//				nextPage = "view/member/signup_ok.jsp";
+				nextPage = generateView("/signup_ok");
 			} else {
 				nextPage = "view/member/signup_ng.jsp";
 			}
@@ -69,6 +72,8 @@ public class MemberController extends HttpServlet {  // 서블릿이 되기 위�
 			
 			memberService.signoutConfirm(request, response);
 			
+			nextPage = request.getContextPath().concat(Config.HOME);
+			
 			break;
 			
 		}
@@ -77,6 +82,15 @@ public class MemberController extends HttpServlet {  // 서블릿이 되기 위�
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(nextPage);
 		requestDispatcher.forward(request, response);
 		
+	}
+	
+	// 리팩토링
+	private String generateView(String viewName) {
+		
+		String view = MemberConfig.VIEW_PREFIX
+				.concat(viewName)
+				.concat(MemberConfig.VIEW_SURFIX);
+		return view;
 	}
 
 	// 사용자가 Post 방식으로 요청
