@@ -33,7 +33,7 @@ public class MemberController extends HttpServlet {  // 서블릿이 되기 위�
 		String nextPage = null;
 		
 		switch (command) {
-		case "/signup.mem":
+		case MemberConfig.MEMBER_SIGNUP_CONFIRM:
 			nextPage = generateView("/signup_form");      // 응답페이지 만들기
 			break;
 			
@@ -46,13 +46,15 @@ public class MemberController extends HttpServlet {  // 서블릿이 되기 위�
 //				nextPage = "view/member/signup_ok.jsp";
 				nextPage = generateView("/signup_ok");
 			} else {
-				nextPage = "view/member/signup_ng.jsp";
+//				nextPage = "view/member/signup_ng.jsp"; 
+				nextPage = generateView("/signup_ng");
 			}
 			
 			break;
 			
-		case "/signin.mem":
-			nextPage = "view/member/signin_form.jsp";
+		case MemberConfig.MEMBER_SIGNIN_CONFIRM:
+//			nextPage = "view/member/signin_form.jsp";
+			nextPage = generateView("/signin_form");
 			
 			break;
 			
@@ -61,14 +63,16 @@ public class MemberController extends HttpServlet {  // 서블릿이 되기 위�
 			int resultForSignIn = memberService.signinConfirm(request, response);
 			
 			if (resultForSignIn == MemberService.SIGN_IN_OK) {
-				nextPage = "view/member/signin_ok.jsp";
+//				nextPage = "view/member/signin_ok.jsp";
+				nextPage = generateView("/signin_ok");
 			} else {
-				nextPage = "view/member/signin_ng.jsp";
+//				nextPage = "view/member/signin_ng.jsp";
+				nextPage = generateView("/signin_ng");
 			}
 			
 			break;
 			
-		case "/signout.mem":
+		case MemberConfig.MEMBER_SIGNOUT_CONFIRM:
 			
 			memberService.signoutConfirm(request, response);
 			
