@@ -26,7 +26,6 @@ public class MemberController extends HttpServlet {  // 서블릿이 되기 위�
 		String contextPath = request.getContextPath();	
 		String command = RequestURI.substring(contextPath.length()); // substring : 문자열을 잘라내는 메서드
 
-		
 		MemberService memberService = null;
 		String nextPage = null;
 		
@@ -49,7 +48,22 @@ public class MemberController extends HttpServlet {  // 서블릿이 되기 위�
 			break;
 			
 		case "/signin.mem":
+			nextPage = "view/member/signin_form.jsp";
+			
 			break;
+			
+		case "/signin_confirm.mem":
+			memberService = new MemberService();
+			int resultForSignIn = memberService.signinConfirm(request, response);
+			
+			if (resultForSignIn == MemberService.SIGN_IN_OK) {
+				nextPage = "view/member/signin_ok.jsp";
+			} else {
+				nextPage = "view/member/signin_ng.jsp";
+			}
+			
+			break;
+			
 		}
 		
 		// dispatcher가 응답해서 페이지를 보여준다.

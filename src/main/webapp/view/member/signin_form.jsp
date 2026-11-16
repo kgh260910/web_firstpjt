@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h2>SIGN-IN FORM</h2>
+	
+	<a href="/firstpjt">home</a>    <%--http://localhost:8090/firstpjt/#none 가 주소일때 넣는방법 --%> 
+	&nbsp;&nbsp; | &nbsp;&nbsp;
+	<a href="/firstpjt/signup.mem">sign-up</a>
+	&nbsp;&nbsp; | &nbsp;&nbsp;
+	<a href="/firstpjt/signin.mem">sign-in</a>
+	
+	<br><br>
+	
+	<form action="/firstpjt/signin_confirm.mem" method="post">
+		<input type="text" name="memId" placeholder="Input member ID!!">
+		<br>
+		<input type="password" name="memPw" placeholder="Input member PW!!">
+		<br>
+		<input type="submit" value="SIGNIN">
+		<input type="reset" value="RESET">
+	</form>
+
+</body>
+</html>
